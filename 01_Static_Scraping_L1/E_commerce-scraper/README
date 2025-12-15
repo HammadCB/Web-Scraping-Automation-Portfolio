@@ -1,0 +1,30 @@
+## 📦 Multi-Page E-commerce Inventory Scraper
+
+This Python script, `ecommerce_scraper.py`, is a robust, multi-page web scraping solution designed to efficiently collect structured product inventory data from standard static e-commerce websites.
+
+It demonstrates professional-grade features necessary for reliable and scalable data acquisition projects, making the extracted data ready for immediate analysis.
+
+---
+
+### 🌟 Key Features & Technical Proof
+
+| Feature | Value to Client / Technical Proof | File Location |
+| :--- | :--- | :--- |
+| **Complete Inventory Collection** | Automatically iterates through a defined page range (`START_PAGE` to `END_PAGE`), ensuring the *entire* available inventory is scraped, not just the initial page. | `run_multi_page_scraper` function |
+| **Professional Proxy Readiness** | Architecturally prepared for secure, high-volume scraping by including a dedicated configuration for paid client proxy services (`PROXY_ENABLED` / `MOCK_PROXY`). | `CONFIGURATION` section |
+| **Data Cleansing & Formatting** | Cleans numerical data (e.g., removes currency symbols like `'€'` and trims whitespace) using `.replace()` and `.strip()`, ensuring the output CSV is suitable for immediate database import or analysis (Excel/Power BI). | `extract_product_data` function |
+| **Efficient Session Management** | Utilizes `requests.Session()` to reuse TCP connections and maintain consistent headers across multiple page requests, significantly improving scraping speed and resource efficiency. | `run_multi_page_scraper` function |
+| **Robust Error Handling** | Implements `response.raise_for_status()` and `try...except` blocks to gracefully handle and log HTTP errors (e.g., 404/500), preventing the script from crashing during execution. | `run_multi_page_scraper` function |
+
+---
+
+### ⚙️ Prerequisites & Execution
+
+#### 1. Prerequisites
+
+The script requires the following standard Python libraries.
+
+```bash
+pip install requests beautifulsoup4 pandas
+# Alternatively, install from the provided requirements file:
+# pip install -r ../requirements.txt
