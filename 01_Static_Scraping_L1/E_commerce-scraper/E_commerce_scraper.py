@@ -15,7 +15,7 @@ from typing import List, Dict, Any
 # Target Site: The mock site for pagination practice
 BASE_URL = 'https://scrapeme.live/shop/page/' 
 START_PAGE = 1
-END_PAGE = 3 # Scrapes pages 1 through 3 for robust practice
+END_PAGE = 3 
 
 # MOCK PROXY SETUP: Demonstrates readiness for client's paid proxy service
 PROXY_ENABLED = False 
@@ -75,6 +75,11 @@ def run_multi_page_scraper():
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit=537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     })
     
+        # Disable SSL warnings for demonstration (not recommended for production)
+    if not session.verify:
+        import urllib3
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    
     if PROXY_ENABLED:
         session.proxies.update(MOCK_PROXY)
         print("INFO: Proxy feature enabled.")
@@ -84,7 +89,9 @@ def run_multi_page_scraper():
         print(f"\n-> Fetching Page {page_num} from: {page_url}")
         
         try:
-            response = session.get(page_url, timeout=15)
+            # A. Fetch HTML with professional error handling and timeout
+            # FIX: Added verify=False to bypass the expired SSL certificate error.
+            response = session.get(page_url, timeout=15, verify=False)
             response.raise_for_status() 
             
             soup = BeautifulSoup(response.content, 'html.parser')
@@ -92,7 +99,7 @@ def run_multi_page_scraper():
             all_scraped_data.extend(current_page_data) 
             
             print(f"-> Extracted {len(current_page_data)} items.")
-            time.sleep(2) # Polite delay
+            time.sleep(2) 
 
         except requests.exceptions.RequestException as e:
             print(f"FATAL ERROR: Failed to fetch {page_url}. Stopping scraper. Error: {e}")
