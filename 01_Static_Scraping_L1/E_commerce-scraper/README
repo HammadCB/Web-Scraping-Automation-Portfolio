@@ -27,4 +27,4 @@ The script requires the following standard Python libraries.
 ```bash
 pip install requests beautifulsoup4 pandas
 # Alternatively, install from the provided requirements file:
-# pip install -r ../requirements.txt
+# pip install -r ../requirements.txt.
