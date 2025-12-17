@@ -1,0 +1,10 @@
+# Web Scraping & Automation
+
+selenium
+webdriver-manager
+
+# Data Processing
+
+pandas
+beautifulsoup4
+requests
