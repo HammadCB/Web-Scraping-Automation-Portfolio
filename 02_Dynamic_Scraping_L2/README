@@ -1,0 +1,26 @@
+# 🥈 Level 2: Dynamic Automation Projects (Selenium)
+
+This folder contains projects demonstrating the automation of user behavior to handle websites that rely on JavaScript (AJAX) to load their content.
+
+---
+
+## 📄 Project: Dynamic Scroll Scraper (`dynamic_scroll_scraper.py`)
+
+### 🛠️ Key Skill Focus
+
+|     Skill                |                    Description                 |                        Technical Implementation |
+| :--- | :--- | :--- |
+| **Browser Control** | Initializes and manages a Chrome browser instance to simulate a real user.   | `Selenium WebDriver` |
+| **Explicit Waits** | Essential for dynamic scraping; pauses until data is fully rendered.          | `WebDriverWait` |
+| **User Simulation** | Mimics human scrolling to trigger infinite load sequences.                   | `window.scrollTo` |
+
+---
+
+## 🚨 IMPORTANT: Setup and Running
+
+Since this project uses Selenium, you must install the required dependencies before execution.
+
+### 1. Install Dependencies
+Update your `requirements.txt` or run the following command in your terminal:
+```bash
+pip install selenium webdriver-manager
